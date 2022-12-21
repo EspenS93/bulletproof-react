@@ -1,11 +1,11 @@
 import clsx from 'clsx';
-import * as React from 'react';
+import { ReactNode } from 'react';
 import { FieldError } from 'react-hook-form';
 
 type FieldWrapperProps = {
   label?: string;
   className?: string;
-  children: React.ReactNode;
+  children: ReactNode;
   error?: FieldError | undefined;
   description?: string;
 };

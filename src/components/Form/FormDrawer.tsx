@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { ReactElement, ReactNode, useEffect, cloneElement } from 'react';
 
 import { useDisclosure } from '@/hooks/useDisclosure';
 
@@ -7,10 +7,10 @@ import { Drawer, DrawerProps } from '../Elements/Drawer';
 
 type FormDrawerProps = {
   isDone: boolean;
-  triggerButton: React.ReactElement;
-  submitButton: React.ReactElement;
+  triggerButton: ReactElement;
+  submitButton: ReactElement;
   title: string;
-  children: React.ReactNode;
+  children: ReactNode;
   size?: DrawerProps['size'];
 };
 
@@ -24,7 +24,7 @@ export const FormDrawer = ({
 }: FormDrawerProps) => {
   const { close, open, isOpen } = useDisclosure();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isDone) {
       close();
     }
@@ -32,7 +32,7 @@ export const FormDrawer = ({
 
   return (
     <>
-      {React.cloneElement(triggerButton, { onClick: open })}
+      {cloneElement(triggerButton, { onClick: open })}
       <Drawer
         isOpen={isOpen}
         onClose={close}

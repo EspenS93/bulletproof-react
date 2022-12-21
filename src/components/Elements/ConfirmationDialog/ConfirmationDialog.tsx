@@ -1,13 +1,13 @@
 import { ExclamationIcon, InformationCircleIcon } from '@heroicons/react/outline';
-import * as React from 'react';
+import { ReactElement, useRef, useEffect, cloneElement } from 'react';
 
 import { Button } from '@/components/Elements/Button';
 import { Dialog, DialogTitle } from '@/components/Elements/Dialog';
 import { useDisclosure } from '@/hooks/useDisclosure';
 
 export type ConfirmationDialogProps = {
-  triggerButton: React.ReactElement;
-  confirmButton: React.ReactElement;
+  triggerButton: ReactElement;
+  confirmButton: ReactElement;
   title: string;
   body?: string;
   cancelButtonText?: string;
@@ -26,15 +26,15 @@ export const ConfirmationDialog = ({
 }: ConfirmationDialogProps) => {
   const { close, open, isOpen } = useDisclosure();
 
-  const cancelButtonRef = React.useRef(null);
+  const cancelButtonRef = useRef(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isDone) {
       close();
     }
   }, [isDone, close]);
 
-  const trigger = React.cloneElement(triggerButton, {
+  const trigger = cloneElement(triggerButton, {
     onClick: open,
   });
 

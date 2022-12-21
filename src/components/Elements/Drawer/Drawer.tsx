@@ -1,8 +1,8 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { XIcon } from '@heroicons/react/outline';
 import clsx from 'clsx';
-import * as React from 'react';
 import 'intersection-observer';
+import { Fragment, ReactNode } from 'react';
 
 const sizes = {
   sm: 'max-w-md',
@@ -16,8 +16,8 @@ export type DrawerProps = {
   isOpen: boolean;
   onClose: () => void;
   title: string;
-  children: React.ReactNode;
-  renderFooter: () => React.ReactNode;
+  children: ReactNode;
+  renderFooter: () => ReactNode;
   size?: keyof typeof sizes;
 };
 
@@ -30,7 +30,7 @@ export const Drawer = ({
   size = 'md',
 }: DrawerProps) => {
   return (
-    <Transition.Root show={isOpen} as={React.Fragment}>
+    <Transition.Root show={isOpen} as={Fragment}>
       <Dialog
         as="div"
         static
@@ -42,7 +42,7 @@ export const Drawer = ({
           <Dialog.Overlay className="absolute inset-0" />
           <div className="fixed inset-y-0 right-0 pl-10 max-w-full flex">
             <Transition.Child
-              as={React.Fragment}
+              as={Fragment}
               enter="transform transition ease-in-out duration-300 sm:duration-300"
               enterFrom="translate-x-full"
               enterTo="translate-x-0"

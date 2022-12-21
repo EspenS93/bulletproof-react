@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react';
-import * as React from 'react';
+import { useRef } from 'react';
 
 import { useDisclosure } from '@/hooks/useDisclosure';
 
@@ -19,7 +19,7 @@ export default meta;
 
 export const Demo: Story = () => {
   const { close, open, isOpen } = useDisclosure();
-  const cancelButtonRef = React.useRef(null);
+  const cancelButtonRef = useRef(null);
 
   return (
     <>

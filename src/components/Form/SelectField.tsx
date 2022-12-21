@@ -1,11 +1,11 @@
 import clsx from 'clsx';
-import * as React from 'react';
+import { ReactNode } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
 
 import { FieldWrapper, FieldWrapperPassThroughProps } from './FieldWrapper';
 
 type Option = {
-  label: React.ReactNode;
+  label: ReactNode;
   value: string | number | string[];
 };
 

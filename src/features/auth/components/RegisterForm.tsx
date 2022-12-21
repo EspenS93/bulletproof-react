@@ -1,5 +1,5 @@
 import { Switch } from '@headlessui/react';
-import * as React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as z from 'zod';
 
@@ -38,7 +38,7 @@ type RegisterFormProps = {
 
 export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
   const { register, isRegistering } = useAuth();
-  const [chooseTeam, setChooseTeam] = React.useState(false);
+  const [chooseTeam, setChooseTeam] = useState(false);
 
   const teamsQuery = useTeams({
     config: {

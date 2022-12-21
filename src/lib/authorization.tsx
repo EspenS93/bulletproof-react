@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { ReactNode, useCallback } from 'react';
 
 import { Comment } from '@/features/comments';
 import { User } from '@/features/users';
@@ -33,7 +33,7 @@ export const useAuthorization = () => {
     throw Error('User does not exist!');
   }
 
-  const checkAccess = React.useCallback(
+  const checkAccess = useCallback(
     ({ allowedRoles }: { allowedRoles: RoleTypes[] }) => {
       if (allowedRoles && allowedRoles.length > 0) {
         return allowedRoles?.includes(user.role);
@@ -48,8 +48,8 @@ export const useAuthorization = () => {
 };
 
 type AuthorizationProps = {
-  forbiddenFallback?: React.ReactNode;
-  children: React.ReactNode;
+  forbiddenFallback?: ReactNode;
+  children: ReactNode;
 } & (
   | {
       allowedRoles: RoleTypes[];

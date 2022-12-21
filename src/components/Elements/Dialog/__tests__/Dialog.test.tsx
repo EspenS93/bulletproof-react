@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useRef } from 'react';
 
 import { useDisclosure } from '@/hooks/useDisclosure';
 import { rtlRender, screen, userEvent, waitFor } from '@/test/test-utils';
@@ -12,7 +12,7 @@ const titleText = 'Modal Title';
 
 const TestDialog = () => {
   const { close, open, isOpen } = useDisclosure();
-  const cancelButtonRef = React.useRef(null);
+  const cancelButtonRef = useRef(null);
 
   return (
     <>

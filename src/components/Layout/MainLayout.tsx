@@ -8,7 +8,7 @@ import {
   XIcon,
 } from '@heroicons/react/outline';
 import clsx from 'clsx';
-import * as React from 'react';
+import { Dispatch, Fragment, ReactNode, SetStateAction, SVGProps, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
 import logo from '@/assets/logo.svg';
@@ -18,7 +18,7 @@ import { useAuthorization, ROLES } from '@/lib/authorization';
 type SideNavigationItem = {
   name: string;
   to: string;
-  icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
+  icon: (props: SVGProps<SVGSVGElement>) => JSX.Element;
 };
 
 const SideNavigation = () => {
@@ -92,7 +92,7 @@ const UserNavigation = () => {
           </div>
           <Transition
             show={open}
-            as={React.Fragment}
+            as={Fragment}
             enter="transition ease-out duration-100"
             enterFrom="transform opacity-0 scale-95"
             enterTo="transform opacity-100 scale-100"
@@ -130,12 +130,12 @@ const UserNavigation = () => {
 
 type MobileSidebarProps = {
   sidebarOpen: boolean;
-  setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setSidebarOpen: Dispatch<SetStateAction<boolean>>;
 };
 
 const MobileSidebar = ({ sidebarOpen, setSidebarOpen }: MobileSidebarProps) => {
   return (
-    <Transition.Root show={sidebarOpen} as={React.Fragment}>
+    <Transition.Root show={sidebarOpen} as={Fragment}>
       <Dialog
         as="div"
         static
@@ -144,7 +144,7 @@ const MobileSidebar = ({ sidebarOpen, setSidebarOpen }: MobileSidebarProps) => {
         onClose={setSidebarOpen}
       >
         <Transition.Child
-          as={React.Fragment}
+          as={Fragment}
           enter="transition-opacity ease-linear duration-300"
           enterFrom="opacity-0"
           enterTo="opacity-100"
@@ -155,7 +155,7 @@ const MobileSidebar = ({ sidebarOpen, setSidebarOpen }: MobileSidebarProps) => {
           <Dialog.Overlay className="fixed inset-0 bg-gray-600 bg-opacity-75" />
         </Transition.Child>
         <Transition.Child
-          as={React.Fragment}
+          as={Fragment}
           enter="transition ease-in-out duration-300 transform"
           enterFrom="-translate-x-full"
           enterTo="translate-x-0"
@@ -165,7 +165,7 @@ const MobileSidebar = ({ sidebarOpen, setSidebarOpen }: MobileSidebarProps) => {
         >
           <div className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-gray-800">
             <Transition.Child
-              as={React.Fragment}
+              as={Fragment}
               enter="ease-in-out duration-300"
               enterFrom="opacity-0"
               enterTo="opacity-100"
@@ -228,11 +228,11 @@ const Logo = () => {
 };
 
 type MainLayoutProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export const MainLayout = ({ children }: MainLayoutProps) => {
-  const [sidebarOpen, setSidebarOpen] = React.useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div className="h-screen flex overflow-hidden bg-gray-100">

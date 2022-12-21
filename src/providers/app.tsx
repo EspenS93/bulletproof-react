@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { ReactNode, Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { HelmetProvider } from 'react-helmet-async';
 import { QueryClientProvider } from 'react-query';
@@ -25,12 +25,12 @@ const ErrorFallback = () => {
 };
 
 type AppProviderProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export const AppProvider = ({ children }: AppProviderProps) => {
   return (
-    <React.Suspense
+    <Suspense
       fallback={
         <div className="flex items-center justify-center w-screen h-screen">
           <Spinner size="xl" />
@@ -48,6 +48,6 @@ export const AppProvider = ({ children }: AppProviderProps) => {
           </QueryClientProvider>
         </HelmetProvider>
       </ErrorBoundary>
-    </React.Suspense>
+    </Suspense>
   );
 };
