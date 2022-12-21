@@ -1,0 +1,12 @@
+import { rtlRender, screen } from '@/test/test-utils';
+
+import { {{ properCase name }} } from '../{{ properCase name }}';
+
+const Test{{ properCase name }} = () => {
+  return <{{ properCase name }} />;
+};
+
+test('should handle basic flow', async () => {
+  rtlRender(<Test{{ properCase name }} />);
+  expect(screen.getByText('{{ properCase name }}')).toBeInTheDocument();
+});

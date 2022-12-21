@@ -51,6 +51,11 @@ module.exports = {
         path: componentGeneratePath + '/{{properCase name}}/{{properCase name}}.stories.tsx',
         templateFile: 'generators/component/Component.stories.tsx.hbs',
       },
+      {
+        type: 'add',
+        path: componentGeneratePath + '/{{properCase name}}/__tests__/{{properCase name}}.test.tsx',
+        templateFile: 'generators/component/Component.test.tsx.hbs',
+      },
     ];
   },
 };
